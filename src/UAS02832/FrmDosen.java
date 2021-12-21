@@ -5,6 +5,12 @@
  */
 package UAS02832;
 
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author XXIVKVNGLRT
@@ -16,6 +22,19 @@ public class FrmDosen extends javax.swing.JFrame {
      */
     public FrmDosen() {
         initComponents();
+        
+     
+    }
+    
+    //filtehuruf
+    void filterhuruf(KeyEvent a){
+        char karakter = a.getKeyChar();
+        if(!(((karakter >= '0') && (karakter <= '9') || (karakter == KeyEvent.VK_BACK_SPACE) || (karakter == KeyEvent.VK_ENTER) || (karakter == KeyEvent.VK_DELETE)))){
+            getToolkit().beep();
+            a.consume();
+            JOptionPane.showMessageDialog(null, "Inputan hanya Angka saja", "Peringatan",1);
+        }
+                
     }
 
     /**
@@ -33,24 +52,20 @@ public class FrmDosen extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         TxtNIDN = new javax.swing.JTextField();
         TxtNama = new javax.swing.JTextField();
-        Radio1 = new javax.swing.JRadioButton();
-        Radio2 = new javax.swing.JRadioButton();
-        TxtTTL = new javax.swing.JTextField();
         CmbProgramStudi = new javax.swing.JComboBox<>();
-        CmbPendidikan = new javax.swing.JComboBox<>();
-        TxtEmail = new javax.swing.JTextField();
-        TxtNoTelp = new javax.swing.JTextField();
+        TxtTelp = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         TxtAlamat = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TblDosen = new javax.swing.JTable();
+        BtnSave = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        CmbJenjang = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         BtnAdd = new javax.swing.JButton();
         BtnReset = new javax.swing.JButton();
@@ -93,23 +108,15 @@ public class FrmDosen extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Biodata Dosen"));
 
-        jLabel3.setText("NIDN");
+        jLabel3.setText("NIP");
 
         jLabel4.setText("Nama Lengkap (beserta gelar)");
-
-        jLabel5.setText("Pendidikan Tertinggi");
-
-        jLabel6.setText("Email");
 
         jLabel7.setText("No. Telp");
 
         jLabel8.setText("Alamat");
 
         jLabel9.setText("Program Studi");
-
-        jLabel10.setText("Jenis Kelamin");
-
-        jLabel11.setText("Tempat dan tanggal lahir");
 
         TxtNIDN.setEnabled(false);
         TxtNIDN.addActionListener(new java.awt.event.ActionListener() {
@@ -130,63 +137,69 @@ public class FrmDosen extends javax.swing.JFrame {
             }
         });
 
-        Radio1.setText("Laki-Laki");
-        Radio1.setEnabled(false);
-        Radio1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Radio1MouseClicked(evt);
-            }
-        });
-
-        Radio2.setText("Perempuan");
-        Radio2.setEnabled(false);
-        Radio2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Radio2MouseClicked(evt);
-            }
-        });
-
-        TxtTTL.setEnabled(false);
-        TxtTTL.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtTTLActionPerformed(evt);
-            }
-        });
-
         CmbProgramStudi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Program Studi--", "Teknik Informatika", "Sitem Informasi", "DKV", "Arstitek" }));
         CmbProgramStudi.setEnabled(false);
+        CmbProgramStudi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CmbProgramStudiMouseClicked(evt);
+            }
+        });
         CmbProgramStudi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CmbProgramStudiActionPerformed(evt);
             }
         });
 
-        CmbPendidikan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Pendidikan Tertinggi--", "D3", "D4", "S1", "S2", "S3" }));
-        CmbPendidikan.setEnabled(false);
-        CmbPendidikan.addActionListener(new java.awt.event.ActionListener() {
+        TxtTelp.setEnabled(false);
+        TxtTelp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CmbPendidikanActionPerformed(evt);
+                TxtTelpActionPerformed(evt);
             }
         });
-
-        TxtEmail.setEnabled(false);
-        TxtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtEmailActionPerformed(evt);
-            }
-        });
-
-        TxtNoTelp.setEnabled(false);
-        TxtNoTelp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtNoTelpActionPerformed(evt);
+        TxtTelp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtTelpKeyTyped(evt);
             }
         });
 
         TxtAlamat.setColumns(20);
         TxtAlamat.setRows(5);
         TxtAlamat.setEnabled(false);
+        TxtAlamat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtAlamatKeyTyped(evt);
+            }
+        });
         jScrollPane1.setViewportView(TxtAlamat);
+
+        TblDosen.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "NIP", "Nama Lengkap", "Jenjang", "Program Studi", "No Telp", "Alamat"
+            }
+        ));
+        TblDosen.setEnabled(false);
+        jScrollPane2.setViewportView(TblDosen);
+
+        BtnSave.setText("Save");
+        BtnSave.setEnabled(false);
+        BtnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSaveActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Jenjang");
+
+        CmbJenjang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Pilih Jenjang--", "D3", "D4", "S1", "S2", "S3" }));
+        CmbJenjang.setEnabled(false);
+        CmbJenjang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CmbJenjangActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -195,30 +208,35 @@ public class FrmDosen extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(TxtNIDN, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(TxtNama, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(Radio1)
-                            .addGap(18, 18, 18)
-                            .addComponent(Radio2))
-                        .addComponent(TxtTTL, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(CmbPendidikan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(CmbProgramStudi, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(TxtEmail))
-                    .addComponent(TxtNoTelp, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel5))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TxtNIDN, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TxtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(CmbJenjang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(125, 125, 125)
+                                .addComponent(CmbProgramStudi, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(TxtTelp, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(BtnSave))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -232,36 +250,30 @@ public class FrmDosen extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(TxtNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel9))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CmbJenjang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CmbProgramStudi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(9, 9, 9)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(Radio1)
-                    .addComponent(Radio2))
-                .addGap(5, 5, 5)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(TxtTTL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(CmbProgramStudi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(CmbPendidikan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TxtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(TxtNoTelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
+                    .addComponent(TxtTelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BtnSave)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -277,6 +289,11 @@ public class FrmDosen extends javax.swing.JFrame {
         BtnReset.setEnabled(false);
 
         BtnExit.setText("Exit");
+        BtnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnExitActionPerformed(evt);
+            }
+        });
 
         BtnCancel.setText("Cancel");
         BtnCancel.setEnabled(false);
@@ -326,8 +343,8 @@ public class FrmDosen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -352,59 +369,96 @@ public class FrmDosen extends javax.swing.JFrame {
 
     private void TxtNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNamaActionPerformed
         // TODO add your handling code here:
-        Radio1.setEnabled(true);
-        Radio2.setEnabled(true);
-        Radio1.requestFocus();
-    }//GEN-LAST:event_TxtNamaActionPerformed
-
-    private void Radio1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Radio1MouseClicked
-        // TODO add your handling code here:
-        TxtTTL.setEnabled(true);
-        TxtTTL.requestFocus();
+        CmbJenjang.setEnabled(true);
+        CmbJenjang.requestFocus();
         
-    }//GEN-LAST:event_Radio1MouseClicked
-
-    private void Radio2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Radio2MouseClicked
-        // TODO add your handling code here:
-        TxtTTL.setEnabled(true);
-        TxtTTL.requestFocus();
-    }//GEN-LAST:event_Radio2MouseClicked
-
-    private void TxtTTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtTTLActionPerformed
-        // TODO add your handling code here:
-        CmbProgramStudi.setEnabled(true);
-        CmbProgramStudi.requestFocus();
-    }//GEN-LAST:event_TxtTTLActionPerformed
+    }//GEN-LAST:event_TxtNamaActionPerformed
 
     private void CmbProgramStudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbProgramStudiActionPerformed
         // TODO add your handling code here:
-        CmbPendidikan.setEnabled(true);
-        CmbPendidikan.requestFocus();
+        TxtTelp.setEnabled(true);
+        TxtTelp.requestFocus();
+        
     }//GEN-LAST:event_CmbProgramStudiActionPerformed
 
-    private void CmbPendidikanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbPendidikanActionPerformed
-        // TODO add your handling code here:
-        TxtEmail.setEnabled(true);
-        TxtEmail.requestFocus();
-    }//GEN-LAST:event_CmbPendidikanActionPerformed
-
-    private void TxtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtEmailActionPerformed
-        // TODO add your handling code here:
-        TxtNoTelp.setEnabled(true);
-        TxtNoTelp.requestFocus();
-    }//GEN-LAST:event_TxtEmailActionPerformed
-
-    private void TxtNoTelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNoTelpActionPerformed
+    private void TxtTelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtTelpActionPerformed
         // TODO add your handling code here:
         TxtAlamat.setEnabled(true);
         TxtAlamat.requestFocus();
-    }//GEN-LAST:event_TxtNoTelpActionPerformed
+  
+    }//GEN-LAST:event_TxtTelpActionPerformed
 
     private void TxtNIDNKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtNIDNKeyTyped
         // TODO add your handling code here:
         BtnReset.setEnabled(true);
         BtnCancel.setEnabled(true);
     }//GEN-LAST:event_TxtNIDNKeyTyped
+
+    private void BtnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnExitActionPerformed
+        // TODO add your handling code here:
+         String ObjButtons[] = {"Yes","No"};
+        int pilihan = JOptionPane.showOptionDialog(null,"Apakah Anda Yakin Ingin keluar ?","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.QUESTION_MESSAGE,null,ObjButtons,ObjButtons[1]);
+        if(pilihan == 0){
+        this.dispose();
+        }
+    }//GEN-LAST:event_BtnExitActionPerformed
+
+    private void CmbProgramStudiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CmbProgramStudiMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmbProgramStudiMouseClicked
+
+    private void TxtTelpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtTelpKeyTyped
+        // TODO add your handling code here:
+        filterhuruf(evt);
+    }//GEN-LAST:event_TxtTelpKeyTyped
+
+    private void TxtAlamatKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtAlamatKeyTyped
+        // TODO add your handling code here:
+        BtnSave.setEnabled(true);
+        
+    }//GEN-LAST:event_TxtAlamatKeyTyped
+
+    private void BtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSaveActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel datamodel = (DefaultTableModel) TblDosen.getModel();
+        List list = new ArrayList<>();
+        TblDosen.setAutoCreateColumnsFromModel(true);
+        list.add( TxtNIDN.getText());
+        list.add( TxtNama.getText());
+        list.add( CmbJenjang.getSelectedItem());
+        list.add( CmbProgramStudi.getSelectedItem());
+        list.add( TxtTelp.getText());
+        list.add( TxtAlamat.getText());
+        datamodel.addRow(list.toArray());
+        
+        
+        //Membersihkan data
+        TxtNIDN.setText("");
+        TxtNama.setText("");
+        CmbJenjang.setSelectedIndex(0);
+        CmbProgramStudi.setSelectedIndex(0);
+        TxtTelp.setText("");
+        TxtAlamat.setText("");
+        
+        
+        //Menonaktifkan inputan
+        TxtNIDN.setEnabled(true);
+        TxtNama.setEnabled(false);
+        CmbJenjang.setEnabled(false);
+        CmbProgramStudi.setEnabled(false);
+        TxtTelp.setEnabled(false);
+        TxtAlamat.setEnabled(false);
+        
+        TxtNIDN.requestFocus();
+        
+        
+    }//GEN-LAST:event_BtnSaveActionPerformed
+
+    private void CmbJenjangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbJenjangActionPerformed
+        // TODO add your handling code here:
+        CmbProgramStudi.setEnabled(true);
+        CmbProgramStudi.requestFocus();
+    }//GEN-LAST:event_CmbJenjangActionPerformed
 
     /**
      * @param args the command line arguments
@@ -446,24 +500,19 @@ public class FrmDosen extends javax.swing.JFrame {
     private javax.swing.JButton BtnCancel;
     private javax.swing.JButton BtnExit;
     private javax.swing.JButton BtnReset;
-    private javax.swing.JComboBox<String> CmbPendidikan;
+    private javax.swing.JButton BtnSave;
+    private javax.swing.JComboBox<String> CmbJenjang;
     private javax.swing.JComboBox<String> CmbProgramStudi;
-    private javax.swing.JRadioButton Radio1;
-    private javax.swing.JRadioButton Radio2;
+    private javax.swing.JTable TblDosen;
     private javax.swing.JTextArea TxtAlamat;
-    private javax.swing.JTextField TxtEmail;
     private javax.swing.JTextField TxtNIDN;
     private javax.swing.JTextField TxtNama;
-    private javax.swing.JTextField TxtNoTelp;
-    private javax.swing.JTextField TxtTTL;
+    private javax.swing.JTextField TxtTelp;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -471,5 +520,6 @@ public class FrmDosen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

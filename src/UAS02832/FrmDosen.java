@@ -40,22 +40,22 @@ public class FrmDosen extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jTextField3 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        TxtNIDN = new javax.swing.JTextField();
+        TxtNama = new javax.swing.JTextField();
+        Radio1 = new javax.swing.JRadioButton();
+        Radio2 = new javax.swing.JRadioButton();
+        TxtTTL = new javax.swing.JTextField();
+        CmbProgramStudi = new javax.swing.JComboBox<>();
+        CmbPendidikan = new javax.swing.JComboBox<>();
+        TxtEmail = new javax.swing.JTextField();
+        TxtNoTelp = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        TxtAlamat = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        BtnAdd = new javax.swing.JButton();
+        BtnReset = new javax.swing.JButton();
+        BtnExit = new javax.swing.JButton();
+        BtnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -111,17 +111,82 @@ public class FrmDosen extends javax.swing.JFrame {
 
         jLabel11.setText("Tempat dan tanggal lahir");
 
-        jRadioButton1.setText("Laki-Laki");
+        TxtNIDN.setEnabled(false);
+        TxtNIDN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtNIDNActionPerformed(evt);
+            }
+        });
+        TxtNIDN.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtNIDNKeyTyped(evt);
+            }
+        });
 
-        jRadioButton2.setText("Perempuan");
+        TxtNama.setEnabled(false);
+        TxtNama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtNamaActionPerformed(evt);
+            }
+        });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Program Studi--", "Teknik Informatika", "Sitem Informasi", "DKV", "Arstitek" }));
+        Radio1.setText("Laki-Laki");
+        Radio1.setEnabled(false);
+        Radio1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Radio1MouseClicked(evt);
+            }
+        });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Pendidikan Tertinggi--", "D3", "D4", "S1", "S2", "S3" }));
+        Radio2.setText("Perempuan");
+        Radio2.setEnabled(false);
+        Radio2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Radio2MouseClicked(evt);
+            }
+        });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        TxtTTL.setEnabled(false);
+        TxtTTL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtTTLActionPerformed(evt);
+            }
+        });
+
+        CmbProgramStudi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Program Studi--", "Teknik Informatika", "Sitem Informasi", "DKV", "Arstitek" }));
+        CmbProgramStudi.setEnabled(false);
+        CmbProgramStudi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CmbProgramStudiActionPerformed(evt);
+            }
+        });
+
+        CmbPendidikan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Pendidikan Tertinggi--", "D3", "D4", "S1", "S2", "S3" }));
+        CmbPendidikan.setEnabled(false);
+        CmbPendidikan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CmbPendidikanActionPerformed(evt);
+            }
+        });
+
+        TxtEmail.setEnabled(false);
+        TxtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtEmailActionPerformed(evt);
+            }
+        });
+
+        TxtNoTelp.setEnabled(false);
+        TxtNoTelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtNoTelpActionPerformed(evt);
+            }
+        });
+
+        TxtAlamat.setColumns(20);
+        TxtAlamat.setRows(5);
+        TxtAlamat.setEnabled(false);
+        jScrollPane1.setViewportView(TxtAlamat);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -142,17 +207,17 @@ public class FrmDosen extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
+                        .addComponent(TxtNIDN, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TxtNama, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jRadioButton1)
+                            .addComponent(Radio1)
                             .addGap(18, 18, 18)
-                            .addComponent(jRadioButton2))
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField4))
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Radio2))
+                        .addComponent(TxtTTL, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CmbPendidikan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CmbProgramStudi, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TxtEmail))
+                    .addComponent(TxtNoTelp, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -162,36 +227,36 @@ public class FrmDosen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtNIDN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(Radio1)
+                    .addComponent(Radio2))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtTTL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CmbProgramStudi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CmbPendidikan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtNoTelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,13 +266,20 @@ public class FrmDosen extends javax.swing.JFrame {
 
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButton1.setText("Add");
+        BtnAdd.setText("Add");
+        BtnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAddActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Reset");
+        BtnReset.setText("Reset");
+        BtnReset.setEnabled(false);
 
-        jButton3.setText("Exit");
+        BtnExit.setText("Exit");
 
-        jButton4.setText("Cancel");
+        BtnCancel.setText("Cancel");
+        BtnCancel.setEnabled(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -215,13 +287,13 @@ public class FrmDosen extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(BtnAdd)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(BtnReset)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(BtnCancel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(BtnExit)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -229,10 +301,10 @@ public class FrmDosen extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3))
+                    .addComponent(BtnAdd)
+                    .addComponent(BtnReset)
+                    .addComponent(BtnCancel)
+                    .addComponent(BtnExit))
                 .addContainerGap())
         );
 
@@ -263,6 +335,76 @@ public class FrmDosen extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAddActionPerformed
+        // TODO add your handling code here:
+        TxtNIDN.setEnabled(true);
+        TxtNIDN.requestFocus();
+        BtnAdd.setEnabled(false);
+        
+    }//GEN-LAST:event_BtnAddActionPerformed
+
+    private void TxtNIDNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNIDNActionPerformed
+        // TODO add your handling code here:
+        TxtNama.setEnabled(true);
+        TxtNama.requestFocus();
+    }//GEN-LAST:event_TxtNIDNActionPerformed
+
+    private void TxtNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNamaActionPerformed
+        // TODO add your handling code here:
+        Radio1.setEnabled(true);
+        Radio2.setEnabled(true);
+        Radio1.requestFocus();
+    }//GEN-LAST:event_TxtNamaActionPerformed
+
+    private void Radio1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Radio1MouseClicked
+        // TODO add your handling code here:
+        TxtTTL.setEnabled(true);
+        TxtTTL.requestFocus();
+        
+    }//GEN-LAST:event_Radio1MouseClicked
+
+    private void Radio2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Radio2MouseClicked
+        // TODO add your handling code here:
+        TxtTTL.setEnabled(true);
+        TxtTTL.requestFocus();
+    }//GEN-LAST:event_Radio2MouseClicked
+
+    private void TxtTTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtTTLActionPerformed
+        // TODO add your handling code here:
+        CmbProgramStudi.setEnabled(true);
+        CmbProgramStudi.requestFocus();
+    }//GEN-LAST:event_TxtTTLActionPerformed
+
+    private void CmbProgramStudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbProgramStudiActionPerformed
+        // TODO add your handling code here:
+        CmbPendidikan.setEnabled(true);
+        CmbPendidikan.requestFocus();
+    }//GEN-LAST:event_CmbProgramStudiActionPerformed
+
+    private void CmbPendidikanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbPendidikanActionPerformed
+        // TODO add your handling code here:
+        TxtEmail.setEnabled(true);
+        TxtEmail.requestFocus();
+    }//GEN-LAST:event_CmbPendidikanActionPerformed
+
+    private void TxtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtEmailActionPerformed
+        // TODO add your handling code here:
+        TxtNoTelp.setEnabled(true);
+        TxtNoTelp.requestFocus();
+    }//GEN-LAST:event_TxtEmailActionPerformed
+
+    private void TxtNoTelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNoTelpActionPerformed
+        // TODO add your handling code here:
+        TxtAlamat.setEnabled(true);
+        TxtAlamat.requestFocus();
+    }//GEN-LAST:event_TxtNoTelpActionPerformed
+
+    private void TxtNIDNKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtNIDNKeyTyped
+        // TODO add your handling code here:
+        BtnReset.setEnabled(true);
+        BtnCancel.setEnabled(true);
+    }//GEN-LAST:event_TxtNIDNKeyTyped
 
     /**
      * @param args the command line arguments
@@ -300,12 +442,20 @@ public class FrmDosen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JButton BtnAdd;
+    private javax.swing.JButton BtnCancel;
+    private javax.swing.JButton BtnExit;
+    private javax.swing.JButton BtnReset;
+    private javax.swing.JComboBox<String> CmbPendidikan;
+    private javax.swing.JComboBox<String> CmbProgramStudi;
+    private javax.swing.JRadioButton Radio1;
+    private javax.swing.JRadioButton Radio2;
+    private javax.swing.JTextArea TxtAlamat;
+    private javax.swing.JTextField TxtEmail;
+    private javax.swing.JTextField TxtNIDN;
+    private javax.swing.JTextField TxtNama;
+    private javax.swing.JTextField TxtNoTelp;
+    private javax.swing.JTextField TxtTTL;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -320,14 +470,6 @@ public class FrmDosen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }

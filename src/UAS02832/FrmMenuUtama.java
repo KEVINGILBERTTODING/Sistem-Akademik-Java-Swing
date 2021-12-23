@@ -5,6 +5,7 @@
  */
 package UAS02832;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -18,6 +19,10 @@ public class FrmMenuUtama extends javax.swing.JFrame {
      */
     public FrmMenuUtama() {
         initComponents();
+        
+         //menanambahkan title icon
+         ImageIcon icon = new ImageIcon("assets/main_menu_icon.png");
+            setIconImage(icon.getImage());
     }
 
     /**
@@ -102,6 +107,11 @@ public class FrmMenuUtama extends javax.swing.JFrame {
         jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem4.setIcon(new javax.swing.ImageIcon("H:\\Mata Kuliah\\Semester 3\\Pemprograman Object Oriented 1\\Tugas\\Uas\\UAS02832\\assets\\btn_matakuliah.png")); // NOI18N
         jMenuItem4.setText("Mata Kuliah");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
@@ -109,18 +119,33 @@ public class FrmMenuUtama extends javax.swing.JFrame {
         jMenu3.setText("Transaksi");
 
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem5.setIcon(new javax.swing.ImageIcon("H:\\Mata Kuliah\\Semester 3\\Pemprograman Object Oriented 1\\Tugas\\Uas\\UAS02832\\assets\\btn_krs.png")); // NOI18N
+        jMenuItem5.setIcon(new javax.swing.ImageIcon("H:\\Mata Kuliah\\Semester 3\\Pemprograman Object Oriented 1\\Tugas\\Uas\\UAS02832\\assets\\krs_icon.png")); // NOI18N
         jMenuItem5.setText("KRS");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem5);
 
         jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem6.setIcon(new javax.swing.ImageIcon("H:\\Mata Kuliah\\Semester 3\\Pemprograman Object Oriented 1\\Tugas\\Uas\\UAS02832\\assets\\btn_khs.png")); // NOI18N
         jMenuItem6.setText("KHS");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem6);
 
         jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem7.setIcon(new javax.swing.ImageIcon("H:\\Mata Kuliah\\Semester 3\\Pemprograman Object Oriented 1\\Tugas\\Uas\\UAS02832\\assets\\btn_daftarNilai.png")); // NOI18N
+        jMenuItem7.setIcon(new javax.swing.ImageIcon("H:\\Mata Kuliah\\Semester 3\\Pemprograman Object Oriented 1\\Tugas\\Uas\\UAS02832\\assets\\btn_transkip.png")); // NOI18N
         jMenuItem7.setText("Transkip");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem7);
 
         jMenuBar1.add(jMenu3);
@@ -170,6 +195,7 @@ public class FrmMenuUtama extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
+        new FrmMahasiswa().setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -186,6 +212,26 @@ public class FrmMenuUtama extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        new FrmMatkul().setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        new FrmKRS().setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        new FrmKHS().setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+         new FrmTranskip().setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -71,6 +71,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Mata Kuliah"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem4ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -85,10 +88,13 @@
                   <KeyStroke key="Ctrl+R"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="H:\Mata Kuliah\Semester 3\Pemprograman Object Oriented 1\Tugas\Uas\UAS02832\assets\btn_krs.png"/>
+                  <Image iconType="2" name="H:\Mata Kuliah\Semester 3\Pemprograman Object Oriented 1\Tugas\Uas\UAS02832\assets\krs_icon.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="KRS"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem5ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
               <Properties>
@@ -100,6 +106,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="KHS"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem6ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
               <Properties>
@@ -107,10 +116,13 @@
                   <KeyStroke key="Ctrl+T"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="H:\Mata Kuliah\Semester 3\Pemprograman Object Oriented 1\Tugas\Uas\UAS02832\assets\btn_daftarNilai.png"/>
+                  <Image iconType="2" name="H:\Mata Kuliah\Semester 3\Pemprograman Object Oriented 1\Tugas\Uas\UAS02832\assets\btn_transkip.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Transkip"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem7ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

@@ -8,6 +8,7 @@ package UAS02832;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,6 +23,10 @@ public class FrmDosen extends javax.swing.JFrame {
      */
     public FrmDosen() {
         initComponents();
+        
+        //menanambahkan title icon
+         ImageIcon icon = new ImageIcon("assets/btn_lecturer.png");
+            setIconImage(icon.getImage());
         
      
     }
@@ -61,11 +66,12 @@ public class FrmDosen extends javax.swing.JFrame {
         TxtTelp = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         TxtAlamat = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        TblDosen = new javax.swing.JTable();
         BtnSave = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         CmbJenjang = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        TblDosen = new javax.swing.JTable();
+        BtnDelete = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         BtnAdd = new javax.swing.JButton();
         BtnReset = new javax.swing.JButton();
@@ -73,6 +79,7 @@ public class FrmDosen extends javax.swing.JFrame {
         BtnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Form Dosen");
         setResizable(false);
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -108,7 +115,7 @@ public class FrmDosen extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Biodata Dosen"));
 
-        jLabel3.setText("NIP");
+        jLabel3.setText("NPP");
 
         jLabel4.setText("Nama Lengkap (beserta gelar)");
 
@@ -137,7 +144,7 @@ public class FrmDosen extends javax.swing.JFrame {
             }
         });
 
-        CmbProgramStudi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Program Studi--", "Teknik Informatika", "Sitem Informasi", "DKV", "Arstitek" }));
+        CmbProgramStudi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Program Studi--", "Teknik Informatika", "Sistem Informasi", "DKV", "Arstitek", "Hukum", "Teknik Sipil", "Sastra Indonesia", "Sastra Inggris" }));
         CmbProgramStudi.setEnabled(false);
         CmbProgramStudi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -172,17 +179,6 @@ public class FrmDosen extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TxtAlamat);
 
-        TblDosen.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "NIP", "Nama Lengkap", "Jenjang", "Program Studi", "No Telp", "Alamat"
-            }
-        ));
-        TblDosen.setEnabled(false);
-        jScrollPane2.setViewportView(TblDosen);
-
         BtnSave.setText("Save");
         BtnSave.setEnabled(false);
         BtnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -201,6 +197,24 @@ public class FrmDosen extends javax.swing.JFrame {
             }
         });
 
+        TblDosen.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "NPP", "Nama Lengkap", "Jenjang", "Program Studi", "No. Telp", "Alamat"
+            }
+        ));
+        jScrollPane3.setViewportView(TblDosen);
+
+        BtnDelete.setText("Delete");
+        BtnDelete.setEnabled(false);
+        BtnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -208,7 +222,7 @@ public class FrmDosen extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane3)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -231,12 +245,14 @@ public class FrmDosen extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(TxtTelp, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(BtnSave))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BtnSave, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BtnDelete, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -271,9 +287,11 @@ public class FrmDosen extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnSave)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(BtnDelete)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -287,6 +305,11 @@ public class FrmDosen extends javax.swing.JFrame {
 
         BtnReset.setText("Reset");
         BtnReset.setEnabled(false);
+        BtnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnResetActionPerformed(evt);
+            }
+        });
 
         BtnExit.setText("Exit");
         BtnExit.addActionListener(new java.awt.event.ActionListener() {
@@ -297,6 +320,11 @@ public class FrmDosen extends javax.swing.JFrame {
 
         BtnCancel.setText("Cancel");
         BtnCancel.setEnabled(false);
+        BtnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -343,10 +371,10 @@ public class FrmDosen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -358,6 +386,8 @@ public class FrmDosen extends javax.swing.JFrame {
         TxtNIDN.setEnabled(true);
         TxtNIDN.requestFocus();
         BtnAdd.setEnabled(false);
+        BtnCancel.setEnabled(true);
+        BtnDelete.setEnabled(false);
         
     }//GEN-LAST:event_BtnAddActionPerformed
 
@@ -365,6 +395,8 @@ public class FrmDosen extends javax.swing.JFrame {
         // TODO add your handling code here:
         TxtNama.setEnabled(true);
         TxtNama.requestFocus();
+        
+        BtnReset.setEnabled(true);
     }//GEN-LAST:event_TxtNIDNActionPerformed
 
     private void TxtNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNamaActionPerformed
@@ -390,8 +422,9 @@ public class FrmDosen extends javax.swing.JFrame {
 
     private void TxtNIDNKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtNIDNKeyTyped
         // TODO add your handling code here:
+        
+       
         BtnReset.setEnabled(true);
-        BtnCancel.setEnabled(true);
     }//GEN-LAST:event_TxtNIDNKeyTyped
 
     private void BtnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnExitActionPerformed
@@ -447,9 +480,11 @@ public class FrmDosen extends javax.swing.JFrame {
         CmbJenjang.setEnabled(false);
         CmbProgramStudi.setEnabled(false);
         TxtTelp.setEnabled(false);
+        BtnSave.setEnabled(false);
         TxtAlamat.setEnabled(false);
         
         TxtNIDN.requestFocus();
+        BtnDelete.setEnabled(true);
         
         
     }//GEN-LAST:event_BtnSaveActionPerformed
@@ -459,6 +494,98 @@ public class FrmDosen extends javax.swing.JFrame {
         CmbProgramStudi.setEnabled(true);
         CmbProgramStudi.requestFocus();
     }//GEN-LAST:event_CmbJenjangActionPerformed
+
+    private void BtnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnResetActionPerformed
+        // TODO add your handling code here:
+        
+        //membersihkan inputan
+        
+        TxtNama.setText("");
+        TxtNIDN.setText("");
+        CmbJenjang.setSelectedIndex(0);
+        CmbProgramStudi.setSelectedIndex(0);
+        TxtTelp.setText("");
+        TxtAlamat.setText("");
+        
+        
+        //menonaktifkan inputan txt
+        
+        TxtNIDN.setEnabled(true);
+        TxtNama.setEnabled(false);
+        CmbJenjang.setEnabled(false);
+        BtnDelete.setEnabled(false);
+        BtnReset.setEnabled(false);
+        CmbProgramStudi.setEnabled(false);
+        TxtTelp.setEnabled(false);
+        TxtAlamat.setEnabled(false);
+        
+         DefaultTableModel dataModel = (DefaultTableModel) TblDosen.getModel();    
+            if (TblDosen.getRowCount() > 0) {
+                for (int i = TblDosen.getRowCount() - 1; i >= 0; i--) {
+                    dataModel.removeRow(i);
+                }
+            }
+            
+        TxtNIDN.requestFocus();
+                
+    }//GEN-LAST:event_BtnResetActionPerformed
+
+    private void BtnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelActionPerformed
+        // TODO add your handling code here:
+           //membersihkan inputan
+        
+        TxtNama.setText("");
+        TxtNIDN.setText("");
+        CmbJenjang.setSelectedIndex(0);
+        CmbProgramStudi.setSelectedIndex(0);
+        TxtTelp.setText("");
+        TxtAlamat.setText("");
+        
+        
+        TxtNIDN.setEnabled(false);
+        TxtNama.setEnabled(false);
+        CmbJenjang.setEnabled(false);
+        CmbProgramStudi.setEnabled(false);
+        TxtTelp.setEnabled(false);
+        TxtAlamat.setEnabled(false);
+        BtnReset.setEnabled(false);
+        BtnCancel.setEnabled(false);
+        BtnDelete.setEnabled(false);
+        BtnAdd.setEnabled(true);
+        
+         DefaultTableModel dataModel = (DefaultTableModel) TblDosen.getModel();    
+            if (TblDosen.getRowCount() > 0) {
+                for (int i = TblDosen.getRowCount() - 1; i >= 0; i--) {
+                    dataModel.removeRow(i);
+                }
+            }
+            
+         BtnAdd.requestFocus();
+            
+    }//GEN-LAST:event_BtnCancelActionPerformed
+
+    private void BtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDeleteActionPerformed
+        // TODO add your handling code here:
+        int brs =0 , jmlbaris=0;
+
+        DefaultTableModel dataModel = (DefaultTableModel) TblDosen.getModel();
+        brs = TblDosen.getSelectedRow();
+
+        if (brs>=0) {
+            int opsi = JOptionPane.showConfirmDialog(null, "Yakin dihapus?", "Peringatan", JOptionPane.YES_NO_OPTION);
+            if (opsi == JOptionPane.YES_NO_OPTION) {
+                //menghapus satu baris dalam tabel
+
+                dataModel.removeRow(brs);
+                jmlbaris = dataModel.getRowCount();
+
+            }
+        }
+        
+       
+        TxtNIDN.requestFocus();
+       
+    }//GEN-LAST:event_BtnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -486,6 +613,9 @@ public class FrmDosen extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrmDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -498,6 +628,7 @@ public class FrmDosen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAdd;
     private javax.swing.JButton BtnCancel;
+    private javax.swing.JButton BtnDelete;
     private javax.swing.JButton BtnExit;
     private javax.swing.JButton BtnReset;
     private javax.swing.JButton BtnSave;
@@ -520,6 +651,6 @@ public class FrmDosen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
 }

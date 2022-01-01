@@ -144,7 +144,7 @@ public class FrmDosen extends javax.swing.JFrame {
             }
         });
 
-        CmbProgramStudi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Program Studi--", "Teknik Informatika", "Sistem Informasi", "DKV", "Arstitek", "Hukum", "Teknik Sipil", "Sastra Indonesia", "Sastra Inggris" }));
+        CmbProgramStudi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Program Studi--", "Teknik Informatika", "Sistem Informasi", "DKV", "Arsitek", "Hukum", "Teknik Sipil", "Sastra Indonesia", "Sastra Inggris" }));
         CmbProgramStudi.setEnabled(false);
         CmbProgramStudi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
